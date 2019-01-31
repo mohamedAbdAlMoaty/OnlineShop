@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="skip_size">30sp</dimen>
+    <dimen name="login_size">15sp</dimen>
+    <dimen name="catogry_size_first">20sp</dimen>
+    <dimen name="catogry_size_second">15sp</dimen>
+    <dimen name="catogry_size_text">20sp</dimen>
+    <dimen name="used_for_sales_size_text">20sp</dimen>
+</resources>

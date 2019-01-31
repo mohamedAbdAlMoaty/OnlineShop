@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarhotoffer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/toolbar_title_hotoffer"
+                android:textColor="@color/gray"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/catogry_size_text"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/search_hotoffer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_arrow_forward_black_24dp"
+                android:layout_alignParentEnd="true"
+                />
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerHotOffer"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/toolbarhotoffer"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>
