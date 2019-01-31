@@ -20,7 +20,6 @@ public class HomeActivity extends BaseActivity {
     BottomNavigationView bottomNavigationView;
     Toolbar toolbar;
     TextView title;
-    String test;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
