@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.hp.onlineshop.R;
 
@@ -14,10 +15,29 @@ import com.example.hp.onlineshop.R;
 
 public class DetailsFragment extends Fragment {
 
+    TextView textView;
+    DetailsListener detailsListener;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.details_fragment, container, false);
+        View rootView = inflater.inflate(R.layout.details_fragment, container, false);
+        textView=rootView.findViewById(R.id.details_used_for_sales);
+        detailsListener.getDetails();
+        return rootView;
     }
+
+    public void SetListner(DetailsListener detailsListener){
+        this.detailsListener=detailsListener;
+    }
+
+    public void edit(String text){
+        textView.setText(text);
+    }
+
+    public interface DetailsListener{
+        void getDetails();
+    }
+
 }

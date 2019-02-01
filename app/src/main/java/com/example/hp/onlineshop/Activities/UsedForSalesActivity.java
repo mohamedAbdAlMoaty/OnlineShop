@@ -32,7 +32,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UsedForSalesActivity extends BaseActivity implements TabLayout.OnTabSelectedListener {
+public class UsedForSalesActivity extends BaseActivity implements TabLayout.OnTabSelectedListener,DetailsFragment.DetailsListener,MapFragment.MapListener {
 
     Toolbar toolbarUsedForSale;
     TextView title;
@@ -46,6 +46,9 @@ public class UsedForSalesActivity extends BaseActivity implements TabLayout.OnTa
     SliderLayout sliderLayout;
     ImageView like;
     TextView usedforsalenew,usedforsaleold;
+    String detailsText;
+    String lat;
+    String lag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +69,9 @@ public class UsedForSalesActivity extends BaseActivity implements TabLayout.OnTa
         tabs.addTab(tabs.newTab().setText(getString(R.string.details)));
         tabs.addOnTabSelectedListener(this);
         detailsFragment = new DetailsFragment();
+        detailsFragment.SetListner(this);
         mapFragment = new MapFragment();
+        mapFragment.SetMapListner(this);
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
@@ -121,11 +126,16 @@ public class UsedForSalesActivity extends BaseActivity implements TabLayout.OnTa
             @Override
             public void onResponse(Call<UsedForSaleResponse> call, Response<UsedForSaleResponse> response) {
                 hideProgressBar();
-              ArrayList<UsedForSaleimage> imgarr= response.body().getData().getImages();
+
+                ArrayList<UsedForSaleimage> imgarr= response.body().getData().getImages();
                 sliderLayout.setIndicatorAnimation(IndicatorAnimations.SWAP); //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
                 sliderLayout.setSliderTransformAnimation(SliderAnimations.FADETRANSFORMATION);
                 sliderLayout.setScrollTimeInSec(5); //set scroll delay in seconds :
                 setSliderViews(imgarr);
+
+                detailsText=response.body().getData().getNote();
+                lat=response.body().getData().getLat();
+                lag=response.body().getData().getLng();
 
             }
 
@@ -160,5 +170,15 @@ public class UsedForSalesActivity extends BaseActivity implements TabLayout.OnTa
     @Override
     public void onTabReselected(TabLayout.Tab tab) {
 
+    }
+
+    @Override
+    public void getDetails() {
+            detailsFragment.edit(detailsText);
+    }
+
+    @Override
+    public void getPosition() {
+        mapFragment.setPosition(lat,lag);
     }
 }

@@ -3,6 +3,10 @@
     package="com.example.hp.onlineshop">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!--high accuracy with GPs and internet (high consume power)-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--low accuracy with only internet (low consume power) -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -17,6 +21,9 @@
         <activity android:name=".Activities.HomeActivity">
 
         </activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/api" />
         <activity android:name=".Activities.UsedForSalesActivity" />
         <activity android:name=".Activities.HotOfferActivity">
             <intent-filter>
