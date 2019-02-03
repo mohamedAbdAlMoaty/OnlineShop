@@ -1,4 +1,4 @@
-package com.example.hp.onlineshop.Fragments;
+package com.example.hp.onlineshop.UI.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

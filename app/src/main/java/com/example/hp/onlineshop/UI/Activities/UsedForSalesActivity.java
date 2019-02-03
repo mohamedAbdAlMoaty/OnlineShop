@@ -1,4 +1,4 @@
-package com.example.hp.onlineshop.Activities;
+package com.example.hp.onlineshop.UI.Activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -9,17 +9,17 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.hp.onlineshop.Bases.BaseActivity;
-import com.example.hp.onlineshop.Fragments.DetailsFragment;
-import com.example.hp.onlineshop.Fragments.MapFragment;
 import com.example.hp.onlineshop.Model.API.APIManager;
 import com.example.hp.onlineshop.Model.API.ApiRetrofit;
 import com.example.hp.onlineshop.Model.DataModel.HotOfferDataItem;
 import com.example.hp.onlineshop.Model.DataModel.UsedForSaleResponse;
 import com.example.hp.onlineshop.Model.DataModel.UsedForSaleimage;
+import com.example.hp.onlineshop.UI.Bases.BaseActivity;
+import com.example.hp.onlineshop.UI.Fragments.DetailsFragment;
+import com.example.hp.onlineshop.UI.Fragments.MapFragment;
 import com.example.hp.onlineshop.R;
+import com.example.hp.onlineshop.Utils.Constaints;
 import com.smarteist.autoimageslider.DefaultSliderView;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -36,7 +36,6 @@ public class UsedForSalesActivity extends BaseActivity implements TabLayout.OnTa
 
     Toolbar toolbarUsedForSale;
     TextView title;
-    String lang="en";
    private int id;
     private String price_before;
     private String price_after;
@@ -65,18 +64,6 @@ public class UsedForSalesActivity extends BaseActivity implements TabLayout.OnTa
 
         showProgressBar();
 
-        tabs.addTab(tabs.newTab().setText(getString(R.string.map)));
-        tabs.addTab(tabs.newTab().setText(getString(R.string.details)));
-        tabs.addOnTabSelectedListener(this);
-        detailsFragment = new DetailsFragment();
-        detailsFragment.SetListner(this);
-        mapFragment = new MapFragment();
-        mapFragment.SetMapListner(this);
-
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.main_frame,detailsFragment);
-        ft.commit();
 
 
 
@@ -120,22 +107,37 @@ public class UsedForSalesActivity extends BaseActivity implements TabLayout.OnTa
     }
 
     private void getData() {
-        String url="http://pazstore.com/api/";
+        String url=Constaints.URL_USED_FOR_SALES;
         ApiRetrofit apiRetrofit= APIManager.getInstance(url);
-        apiRetrofit.getUsedForSaleResponse(lang,id).enqueue(new Callback<UsedForSaleResponse>() {
+        apiRetrofit.getUsedForSaleResponse(Constaints.LANG,id).enqueue(new Callback<UsedForSaleResponse>() {
             @Override
             public void onResponse(Call<UsedForSaleResponse> call, Response<UsedForSaleResponse> response) {
                 hideProgressBar();
 
+                detailsText=response.body().getData().getNote();
+                lat=response.body().getData().getLat();
+                lag=response.body().getData().getLng();
                 ArrayList<UsedForSaleimage> imgarr= response.body().getData().getImages();
+
                 sliderLayout.setIndicatorAnimation(IndicatorAnimations.SWAP); //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
                 sliderLayout.setSliderTransformAnimation(SliderAnimations.FADETRANSFORMATION);
                 sliderLayout.setScrollTimeInSec(5); //set scroll delay in seconds :
                 setSliderViews(imgarr);
 
-                detailsText=response.body().getData().getNote();
-                lat=response.body().getData().getLat();
-                lag=response.body().getData().getLng();
+
+                tabs.addTab(tabs.newTab().setText(getString(R.string.map)));
+                tabs.addTab(tabs.newTab().setText(getString(R.string.details)));
+                tabs.addOnTabSelectedListener(UsedForSalesActivity.this);
+                detailsFragment = new DetailsFragment();
+                detailsFragment.SetListner(UsedForSalesActivity.this);
+                mapFragment = new MapFragment();
+                mapFragment.SetMapListner(UsedForSalesActivity.this);
+
+                //default opened fragment
+                FragmentManager fm = getSupportFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.main_frame,mapFragment);
+                ft.commit();
 
             }
 

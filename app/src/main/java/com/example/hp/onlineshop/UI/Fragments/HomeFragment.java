@@ -1,7 +1,7 @@
-package com.example.hp.onlineshop.Fragments;
+package com.example.hp.onlineshop.UI.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,14 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.example.hp.onlineshop.Adapter.DepartmentAdapter;
-import com.example.hp.onlineshop.Adapter.HomeAdapter;
-import com.example.hp.onlineshop.Bases.BaseFragment;
 import com.example.hp.onlineshop.Model.API.APIManager;
 import com.example.hp.onlineshop.Model.API.ApiRetrofit;
 import com.example.hp.onlineshop.Model.DataModel.HomeResponse;
+import com.example.hp.onlineshop.UI.Activities.HotOfferActivity;
+import com.example.hp.onlineshop.UI.Adapter.HomeAdapter;
+import com.example.hp.onlineshop.UI.Bases.BaseFragment;
 import com.example.hp.onlineshop.R;
+import com.example.hp.onlineshop.Utils.Constaints;
 import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
@@ -31,7 +33,7 @@ public class HomeFragment extends BaseFragment {
 
     RecyclerView recyclerHome;
     ImageView image1,image2,image3;
-    String lang="en";
+    TextView seeAll;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,15 +44,25 @@ public class HomeFragment extends BaseFragment {
         image1=rootView.findViewById(R.id.image1);
         image2=rootView.findViewById(R.id.image2);
         image3=rootView.findViewById(R.id.image3);
+        seeAll=rootView.findViewById(R.id.home_see_all);
         showProgressBar();
         getData();
+
+        seeAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), HotOfferActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return rootView;
     }
 
     private void getData() {
-        String url="http://pazstore.com/api/";
+        String url=Constaints.URL_HOME_DEPART_FRAGMENT;
         ApiRetrofit apiRetrofit= APIManager.getInstance(url);
-        apiRetrofit.HomeResponse(lang).enqueue(new Callback<HomeResponse>() {
+        apiRetrofit.HomeResponse(Constaints.LANG).enqueue(new Callback<HomeResponse>() {
             @Override
             public void onResponse(Call<HomeResponse> call, Response<HomeResponse> response) {
                 hideProgressBar();

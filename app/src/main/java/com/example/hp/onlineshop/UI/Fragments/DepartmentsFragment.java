@@ -1,4 +1,4 @@
-package com.example.hp.onlineshop.Fragments;
+package com.example.hp.onlineshop.UI.Fragments;
 
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -9,14 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.hp.onlineshop.Adapter.DepartmentAdapter;
-import com.example.hp.onlineshop.Bases.BaseFragment;
 import com.example.hp.onlineshop.Model.API.APIManager;
 import com.example.hp.onlineshop.Model.API.ApiRetrofit;
-import com.example.hp.onlineshop.Model.DataModel.Categories;
 import com.example.hp.onlineshop.Model.DataModel.CategoriesResponse;
 import com.example.hp.onlineshop.Model.DataModel.Category;
+import com.example.hp.onlineshop.UI.Adapter.DepartmentAdapter;
+import com.example.hp.onlineshop.UI.Bases.BaseFragment;
 import com.example.hp.onlineshop.R;
+import com.example.hp.onlineshop.Utils.Constaints;
 
 import java.util.ArrayList;
 
@@ -31,7 +31,6 @@ import retrofit2.Response;
 public class DepartmentsFragment extends BaseFragment {
 
     RecyclerView recyclerView;
-    String lang="en";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,9 +43,9 @@ public class DepartmentsFragment extends BaseFragment {
     }
 
     private void getData() {
-        String url="http://pazstore.com/api/";
+        String url=Constaints.URL_HOME_DEPART_FRAGMENT;
         ApiRetrofit apiRetrofit= APIManager.getInstance(url);
-        apiRetrofit.getData(lang).enqueue(new Callback<CategoriesResponse>() {
+        apiRetrofit.getData(Constaints.LANG).enqueue(new Callback<CategoriesResponse>() {
             @Override
             public void onResponse(Call<CategoriesResponse> call, Response<CategoriesResponse> response) {
                 hideProgressBar();

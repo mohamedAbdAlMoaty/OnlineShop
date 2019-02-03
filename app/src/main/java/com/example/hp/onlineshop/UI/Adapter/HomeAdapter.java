@@ -1,16 +1,18 @@
-package com.example.hp.onlineshop.Adapter;
+package com.example.hp.onlineshop.UI.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.hp.onlineshop.Model.DataModel.Category;
 import com.example.hp.onlineshop.Model.DataModel.Product;
 import com.example.hp.onlineshop.R;
+import com.example.hp.onlineshop.UI.Activities.UsedForSalesActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

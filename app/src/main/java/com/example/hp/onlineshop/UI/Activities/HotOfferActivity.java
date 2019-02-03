@@ -1,4 +1,4 @@
-package com.example.hp.onlineshop.Activities;
+package com.example.hp.onlineshop.UI.Activities;
 
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -7,13 +7,14 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
-import com.example.hp.onlineshop.Adapter.HotOfferAdapter;
-import com.example.hp.onlineshop.Bases.BaseActivity;
 import com.example.hp.onlineshop.Model.API.APIManager;
 import com.example.hp.onlineshop.Model.API.ApiRetrofit;
 import com.example.hp.onlineshop.Model.DataModel.HotOfferDataItem;
 import com.example.hp.onlineshop.Model.DataModel.HotOfferResponse;
+import com.example.hp.onlineshop.UI.Adapter.HotOfferAdapter;
+import com.example.hp.onlineshop.UI.Bases.BaseActivity;
 import com.example.hp.onlineshop.R;
+import com.example.hp.onlineshop.Utils.Constaints;
 
 import java.util.ArrayList;
 
@@ -21,12 +22,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 public class HotOfferActivity extends BaseActivity {
 
     Toolbar toolbarhotoffer;
     TextView title;
     RecyclerView recyclerView;
-    String lang="en";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +45,9 @@ public class HotOfferActivity extends BaseActivity {
     }
 
     private void getData() {
-        String url="http://pazstore.com/api/";
+        String url=Constaints.URL_HOT_OFFER;
         ApiRetrofit apiRetrofit= APIManager.getInstance(url);
-        apiRetrofit.getHotOfferResponse(lang).enqueue(new Callback<HotOfferResponse>() {
+        apiRetrofit.getHotOfferResponse(Constaints.LANG).enqueue(new Callback<HotOfferResponse>() {
             @Override
             public void onResponse(Call<HotOfferResponse> call, Response<HotOfferResponse> response) {
                 hideProgressBar();

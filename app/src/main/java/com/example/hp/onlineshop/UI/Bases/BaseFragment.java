@@ -1,4 +1,4 @@
-package com.example.hp.onlineshop.Bases;
+package com.example.hp.onlineshop.UI.Bases;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;

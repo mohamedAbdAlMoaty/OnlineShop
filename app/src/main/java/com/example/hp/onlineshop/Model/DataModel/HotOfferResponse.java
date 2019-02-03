@@ -1,7 +1,5 @@
 package com.example.hp.onlineshop.Model.DataModel;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Created by HP on 1/30/2019.
  */

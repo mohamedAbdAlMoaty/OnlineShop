@@ -16,7 +16,7 @@ public class HomeResponse {
     private Integer code;
     @SerializedName("data")
     @Expose
-    private HomeData HomeData;
+    private com.example.hp.onlineshop.Model.DataModel.HomeData HomeData;
 
     public Boolean getStatus() {
         return status;
@@ -34,11 +34,11 @@ public class HomeResponse {
         this.code = code;
     }
 
-    public HomeData getHomeData() {
+    public com.example.hp.onlineshop.Model.DataModel.HomeData getHomeData() {
         return HomeData;
     }
 
-    public void setHomeData(HomeData homeData) {
+    public void setHomeData(com.example.hp.onlineshop.Model.DataModel.HomeData homeData) {
         HomeData = homeData;
     }
 }

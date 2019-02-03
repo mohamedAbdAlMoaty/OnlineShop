@@ -1,7 +1,6 @@
 package com.example.hp.onlineshop.Model.API;
 
 import com.example.hp.onlineshop.Model.DataModel.Activation;
-import com.example.hp.onlineshop.Model.DataModel.Categories;
 import com.example.hp.onlineshop.Model.DataModel.CategoriesResponse;
 import com.example.hp.onlineshop.Model.DataModel.HomeResponse;
 import com.example.hp.onlineshop.Model.DataModel.HotOfferResponse;
@@ -15,14 +14,13 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 
-
 public interface ApiRetrofit {
 
     @FormUrlEncoded
     @POST("user/register")
-    Call<Response> getResponse (@Field("mobile_number")String mobile_number,
-                                @Field("device_token")String device_token,
-                                @Field("name")String name);
+    Call<Response> getResponse(@Field("mobile_number") String mobile_number,
+                               @Field("device_token") String device_token,
+                               @Field("name") String name);
 
     @FormUrlEncoded
     @POST("user/activateAccount")

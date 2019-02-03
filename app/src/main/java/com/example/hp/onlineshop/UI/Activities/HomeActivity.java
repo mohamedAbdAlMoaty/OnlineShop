@@ -1,4 +1,4 @@
-package com.example.hp.onlineshop.Activities;
+package com.example.hp.onlineshop.UI.Activities;
 
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
@@ -7,12 +7,11 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.hp.onlineshop.Bases.BaseActivity;
-import com.example.hp.onlineshop.Fragments.DepartmentsFragment;
-import com.example.hp.onlineshop.Fragments.HomeFragment;
+import com.example.hp.onlineshop.UI.Bases.BaseActivity;
+import com.example.hp.onlineshop.UI.Fragments.DepartmentsFragment;
+import com.example.hp.onlineshop.UI.Fragments.HomeFragment;
 import com.example.hp.onlineshop.R;
 
 public class HomeActivity extends BaseActivity {

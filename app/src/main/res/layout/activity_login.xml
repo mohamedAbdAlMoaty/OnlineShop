@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/yellow"
     android:padding="30dp"
-    tools:context="com.example.hp.onlineshop.Activities.LoginActivity">
+    tools:context=".UI.Activities.LoginActivity">
 
 
 
@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="@string/last_name"
+        android:inputType="textPersonName"
         android:textColor="@color/gray"
         android:textColorHint="@color/hint_gray"
         android:gravity="center"
@@ -33,6 +34,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/background_text_white"
         android:hint="@string/first_name"
+        android:inputType="textPersonName"
         android:gravity="center"
         android:textColor="@color/gray"
         android:textColorHint="@color/hint_gray"
@@ -49,6 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:textColor="@color/gray"
+        android:inputType="phone"
         android:textColorHint="@color/hint_gray"
         android:background="@drawable/background_text_white"
         android:padding="10dp"

@@ -1,4 +1,4 @@
-package com.example.hp.onlineshop.Adapter;
+package com.example.hp.onlineshop.UI.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.hp.onlineshop.Activities.UsedForSalesActivity;
 import com.example.hp.onlineshop.Model.DataModel.HotOfferDataItem;
+import com.example.hp.onlineshop.UI.Activities.UsedForSalesActivity;
 import com.example.hp.onlineshop.R;
 import com.squareup.picasso.Picasso;
 

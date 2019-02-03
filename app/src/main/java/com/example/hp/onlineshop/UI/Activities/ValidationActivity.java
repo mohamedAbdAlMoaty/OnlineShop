@@ -1,19 +1,19 @@
-package com.example.hp.onlineshop.Activities;
+package com.example.hp.onlineshop.UI.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.hp.onlineshop.Bases.BaseActivity;
 import com.example.hp.onlineshop.Model.API.APIManager;
 import com.example.hp.onlineshop.Model.API.ApiRetrofit;
 import com.example.hp.onlineshop.Model.DataModel.Activation;
+import com.example.hp.onlineshop.UI.Bases.BaseActivity;
 import com.example.hp.onlineshop.R;
+import com.example.hp.onlineshop.Utils.Constaints;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +26,6 @@ public class ValidationActivity extends BaseActivity {
     Button login;
     SharedPreferences sharedPreferences;
     String token;
-    String lang="en";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +34,8 @@ public class ValidationActivity extends BaseActivity {
         activationCode=findViewById(R.id.activationCode);
         skip=findViewById(R.id.Skipactive);
         login=findViewById(R.id.Loginactive);
-        sharedPreferences = getSharedPreferences("appSharedPre", MODE_PRIVATE);
-        token=sharedPreferences.getString("token","");
+        sharedPreferences = getSharedPreferences(Constaints.SHARED_PREFRE, MODE_PRIVATE);
+        token=sharedPreferences.getString(Constaints.TOKEN,"");
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,9 +58,9 @@ public class ValidationActivity extends BaseActivity {
 
         String activation_code=activationCode.getText().toString();
 
-        String urllanguage="http://services-apps.net/paz/api/";
+        String urllanguage=Constaints.URL_LANGUAGE;
         ApiRetrofit apiRetrofit= APIManager.getInstance(urllanguage);
-        apiRetrofit.getactivation(token,lang,activation_code).enqueue(new Callback<Activation>() {
+        apiRetrofit.getactivation(token,Constaints.LANG,activation_code).enqueue(new Callback<Activation>() {
             @Override
             public void onResponse(Call<Activation> call, Response<Activation> response) {
                 Intent intent=new Intent(ValidationActivity.this,HomeActivity.class);
