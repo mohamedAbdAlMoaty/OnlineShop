@@ -5,38 +5,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:id="@+id/layoutall"
+    android:id="@+id/like_layoutall"
+    android:gravity="center"
     android:layout_height="wrap_content"
     >
 
     <ImageView
-        android:id="@+id/hotofferlike"
+        android:id="@+id/like_like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/ic_un_like"
         />
     <ImageView
-        android:id="@+id/hotoffer_image"
+        android:id="@+id/like_image"
         android:scaleType="centerInside"
         android:layout_width="match_parent"
         android:layout_height="150dp" />
 
     <TextView
-        android:id="@+id/hotoffer_name"
+        android:id="@+id/like_name"
         android:textStyle="bold"
         android:textSize="@dimen/catogry_size_first"
         android:layout_width="wrap_content"
         android:layout_gravity="center"
         android:layout_height="wrap_content" />
     <TextView
-        android:id="@+id/hotofferprice"
+        android:id="@+id/like_price"
         android:layout_width="wrap_content"
         android:layout_gravity="center"
         android:textSize="@dimen/catogry_size_second"
         android:textColor="@color/gray"
         android:layout_height="wrap_content" />
     <TextView
-        android:id="@+id/hotofferold_price"
+        android:id="@+id/like_old_price"
         android:textColor="@color/hint_gray"
         android:layout_gravity="center"
         android:textSize="@dimen/catogry_size_second"
@@ -44,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <TextView
-        android:id="@+id/hotoffertime"
+        android:id="@+id/like_time"
         android:textColor="@color/hint_gray"
         android:layout_gravity="center"
         android:textSize="@dimen/catogry_size_second"

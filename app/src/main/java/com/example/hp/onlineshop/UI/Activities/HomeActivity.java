@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import com.example.hp.onlineshop.UI.Bases.BaseActivity;
 import com.example.hp.onlineshop.UI.Fragments.DepartmentsFragment;
 import com.example.hp.onlineshop.UI.Fragments.HomeFragment;
 import com.example.hp.onlineshop.R;
+import com.example.hp.onlineshop.UI.Fragments.LikesFragment;
 
 public class HomeActivity extends BaseActivity {
 
@@ -44,6 +46,10 @@ public class HomeActivity extends BaseActivity {
                             case R.id.departicon:
                                 title.setText(R.string.departments);
                                 fragment=new DepartmentsFragment();
+                                break;
+                            case R.id.likeicon:
+                                title.setText(R.string.likes);
+                                fragment=new LikesFragment();
                                 break;
                         }
                         getSupportFragmentManager()

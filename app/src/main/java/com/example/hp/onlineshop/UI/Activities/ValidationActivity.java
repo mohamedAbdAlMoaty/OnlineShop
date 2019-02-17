@@ -3,6 +3,7 @@ package com.example.hp.onlineshop.UI.Activities;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,8 +25,9 @@ public class ValidationActivity extends BaseActivity {
     EditText activationCode;
     TextView skip;
     Button login;
-    SharedPreferences sharedPreferences;
     String token;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +37,7 @@ public class ValidationActivity extends BaseActivity {
         skip=findViewById(R.id.Skipactive);
         login=findViewById(R.id.Loginactive);
         sharedPreferences = getSharedPreferences(Constaints.SHARED_PREFRE, MODE_PRIVATE);
-        token=sharedPreferences.getString(Constaints.TOKEN,"");
+        token=getIntent().getStringExtra(Constaints.TOKEN);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,16 +62,29 @@ public class ValidationActivity extends BaseActivity {
 
         String urllanguage=Constaints.URL_LANGUAGE;
         ApiRetrofit apiRetrofit= APIManager.getInstance(urllanguage);
-        apiRetrofit.getactivation(token,Constaints.LANG,activation_code).enqueue(new Callback<Activation>() {
+        showProgressBar();
+        apiRetrofit.getactivation("Bearer "+token,Constaints.LANG,activation_code).enqueue(new Callback<Activation>() {
             @Override
             public void onResponse(Call<Activation> call, Response<Activation> response) {
-                Intent intent=new Intent(ValidationActivity.this,HomeActivity.class);
-                startActivity(intent);
+                hideProgressBar();
+                if(response.body().getCode() == 200) {
+
+
+                // save token in sharedPreferences to be able to transfer around the project
+                editor = sharedPreferences.edit();
+                editor.putString(Constaints.TOKEN, token);
+                editor.apply();
+
+
+
+                    Intent intent = new Intent(ValidationActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                }
             }
 
             @Override
             public void onFailure(Call<Activation> call, Throwable t) {
-
+                hideProgressBar();
             }
         });
     }

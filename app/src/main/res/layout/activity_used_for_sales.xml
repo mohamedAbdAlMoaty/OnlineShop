@@ -52,14 +52,13 @@
                     android:layout_weight="0.1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/star_big_on"
+                    app:srcCompat="@mipmap/ic_un_like"
                     />
 
                 <TextView
                     android:id="@+id/usedforsalenew"
                     android:layout_width="wrap_content"
                     android:layout_gravity="center"
-                    android:text="hallo"
                     android:gravity="end"
                     android:paddingEnd="20dp"
                     android:layout_weight="0.9"
@@ -70,7 +69,6 @@
                     android:id="@+id/usedforsaleold"
                     android:textColor="@color/hint_gray"
                     android:layout_gravity="center"
-                    android:text="hallo"
                     android:textSize="@dimen/catogry_size_second"
                     android:background="@drawable/line"
                     android:layout_width="wrap_content"

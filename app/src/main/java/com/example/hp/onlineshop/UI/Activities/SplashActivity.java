@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Bundle;
 import com.example.hp.onlineshop.UI.Bases.BaseActivity;
 import com.example.hp.onlineshop.R;
+import com.example.hp.onlineshop.Utils.Constaints;
 
 public class SplashActivity extends BaseActivity {
 
@@ -16,7 +17,13 @@ public class SplashActivity extends BaseActivity {
                 .postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        startActivity(new Intent(SplashActivity.this,LoginActivity.class));
+                        String token = getSharedPreferences(Constaints.SHARED_PREFRE, MODE_PRIVATE).getString(Constaints.TOKEN,"");
+                        if(token!=null && token.length()>0){
+                            startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+                        }
+                        else {
+                            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                        }
                         finish();
                     }
                 }, 3000);

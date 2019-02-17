@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.hp.onlineshop.Model.DataModel.HotOfferDataItem;
-import com.example.hp.onlineshop.UI.Activities.UsedForSalesActivity;
+import com.example.hp.onlineshop.UI.Activities.ProductActivity;
 import com.example.hp.onlineshop.R;
 import com.squareup.picasso.Picasso;
 
@@ -25,10 +25,12 @@ public class HotOfferAdapter extends RecyclerView.Adapter<HotOfferAdapter.ViewHo
 
     private ArrayList<HotOfferDataItem> grp;
     private Context context;
+    LikeActionHotOffer likeActionHotOffer;
 
-    public HotOfferAdapter(ArrayList<HotOfferDataItem> grp, Context context) {
+    public HotOfferAdapter(ArrayList<HotOfferDataItem> grp, Context context,LikeActionHotOffer  likeActionHotOffer) {
         this.grp= grp;
         this.context=context;
+        this.likeActionHotOffer=likeActionHotOffer;
     }
 
 
@@ -44,10 +46,24 @@ public class HotOfferAdapter extends RecyclerView.Adapter<HotOfferAdapter.ViewHo
         holder.hotofferold_price.setText(grp.get(position).getPrice_before()+" "+context.getString(R.string.kd));
         holder.hotofferprice.setText(grp.get(position).getPrice_after()+" "+context.getString(R.string.kd));
         Picasso.with(context).load(grp.get(position).getImage()).into(holder.hotoffer_image);
+        if(grp.get(position).isFav()){
+            holder.like.setImageResource(R.mipmap.ic_like);
+        }
+        else{
+            holder.like.setImageResource(R.mipmap.ic_un_like);
+        }
+
+        holder.like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                likeActionHotOffer.onClick(grp.get(position));
+            }
+        });
+
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(context,UsedForSalesActivity.class);
+                Intent intent=new Intent(context,ProductActivity.class);
                 intent.putExtra("HotOfferDataItem",grp.get(position));
                 context.startActivity(intent);
             }
@@ -77,6 +93,10 @@ public class HotOfferAdapter extends RecyclerView.Adapter<HotOfferAdapter.ViewHo
             hotoffertime=itemView.findViewById(R.id.hotoffertime);
             linearLayout=itemView.findViewById(R.id.layoutall);
         }
+    }
+
+    public interface LikeActionHotOffer{
+        void onClick(HotOfferDataItem hotOfferDataItem);
     }
 
 }

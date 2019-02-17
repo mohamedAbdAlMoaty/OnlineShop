@@ -6,9 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by HP on 1/26/2019.
- */
+
 
 public class HomeData {
     @SerializedName("up_banner")

@@ -1,32 +1,29 @@
 package com.example.hp.onlineshop.UI.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.hp.onlineshop.Model.DataModel.Product;
 import com.example.hp.onlineshop.R;
-import com.example.hp.onlineshop.UI.Activities.UsedForSalesActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-/**
- * Created by HP on 1/26/2019.
- */
+
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>{
     private ArrayList<Product> grp;
     private Context context;
-    public HomeAdapter(ArrayList<Product> grp, Context context) {
+    LikeAction likeAction;
+    public HomeAdapter(ArrayList<Product> grp, Context context,LikeAction likeAction) {
         this.grp= grp;
         this.context=context;
+        this.likeAction = likeAction;
     }
 
 
@@ -41,6 +38,18 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>{
         holder.item_name.setText(grp.get(position).getTitle());
         holder.price.setText(grp.get(position).getPriceAfter());
         holder.old_price.setText(grp.get(position).getPriceBefore());
+        if(grp.get(position).isFav()){
+            holder.like.setImageResource(R.mipmap.ic_like);
+        }
+        else{
+            holder.like.setImageResource(R.mipmap.ic_un_like);
+        }
+        holder.like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                likeAction.onClick(grp.get(position));
+            }
+        });
         Picasso.with(context).load(grp.get(position).getImage()).into(holder.item_image);
     }
 
@@ -63,5 +72,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>{
             price=itemView.findViewById(R.id.price);
             old_price=itemView.findViewById(R.id.old_price);
         }
+    }
+    public interface LikeAction{
+        void onClick(Product product);
     }
 }

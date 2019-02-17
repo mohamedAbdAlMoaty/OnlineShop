@@ -20,13 +20,21 @@ public class UsedForSaleData {
     private String lat;
     private String lng;
     private ArrayList<UsedForSaleimage> images;
-
+    private boolean fav;
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public boolean isFav() {
+        return fav;
+    }
+
+    public void setFav(boolean fav) {
+        this.fav = fav;
     }
 
     public String getTitle() {

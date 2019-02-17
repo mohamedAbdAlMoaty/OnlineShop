@@ -4,6 +4,7 @@ package com.example.hp.onlineshop.UI.Activities;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,8 +28,7 @@ public class LoginActivity extends BaseActivity {
     EditText phoneNumber,firstName,lastName;
     Button login;
     TextView skip;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+
 
 
     @Override
@@ -46,7 +46,7 @@ public class LoginActivity extends BaseActivity {
         lastName=findViewById(R.id.LastName);
         login=findViewById(R.id.login);
         skip=findViewById(R.id.Skip);
-        sharedPreferences = getSharedPreferences(Constaints.SHARED_PREFRE, MODE_PRIVATE);
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,12 +86,8 @@ public class LoginActivity extends BaseActivity {
                 hideProgressBar();
                 String token= response.body().getData().getToken();
 
-                // save token in sharedPreferences to be able to transfer around the project
-                editor = sharedPreferences.edit();
-                editor.putString(Constaints.TOKEN, token);
-                editor.apply();
-
                 Intent intent=new Intent(LoginActivity.this,ValidationActivity.class);
+                intent.putExtra(Constaints.TOKEN,token);
                 startActivity(intent);
 
             }

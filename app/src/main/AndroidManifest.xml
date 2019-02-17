@@ -30,7 +30,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/api" />
-        <activity android:name=".UI.Activities.UsedForSalesActivity" />
+        <activity android:name=".UI.Activities.ProductActivity" />
         <activity android:name=".UI.Activities.HotOfferActivity">
         </activity>
     </application>

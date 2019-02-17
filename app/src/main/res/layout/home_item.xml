@@ -12,7 +12,7 @@
         android:id="@+id/like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/star_big_on"
+        app:srcCompat="@mipmap/ic_un_like"
         />
     <ImageView
         android:id="@+id/item_image"

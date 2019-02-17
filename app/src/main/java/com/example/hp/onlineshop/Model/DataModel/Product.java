@@ -29,7 +29,15 @@ public class Product implements Parcelable {
     @SerializedName("image")
     @Expose
     private String image;
+    private boolean fav;
 
+    public boolean isFav() {
+        return fav;
+    }
+
+    public void setFav(boolean fav) {
+        this.fav = fav;
+    }
 
     protected Product(Parcel in) {
         if (in.readByte() == 0) {

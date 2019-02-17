@@ -16,6 +16,15 @@ public class HotOfferDataItem implements Parcelable {
     private String price_after;
     private int quntaty;
     private String image;
+    private boolean fav;
+
+    public boolean isFav() {
+        return fav;
+    }
+
+    public void setFav(boolean fav) {
+        this.fav = fav;
+    }
 
     protected HotOfferDataItem(Parcel in) {
         id = in.readInt();
