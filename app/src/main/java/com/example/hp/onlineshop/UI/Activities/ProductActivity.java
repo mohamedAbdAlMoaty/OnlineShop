@@ -54,6 +54,7 @@ public class ProductActivity extends BaseActivity implements TabLayout.OnTabSele
     String lag;
     boolean isfavourite;
     TextView addCard;
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +67,22 @@ public class ProductActivity extends BaseActivity implements TabLayout.OnTabSele
         addCard=findViewById(R.id.addtocard);
         tabs = findViewById(R.id.tabs);
         sliderLayout = findViewById(R.id.imageSlider);
+        //or  send data to fragment using interface
+        detailsFragment = new DetailsFragment();        // we cant make constractor so will make method
+        detailsFragment.SetListner(this);   //according to interface
+        mapFragment = new MapFragment();                 // we cant make constractor so will make method
+        mapFragment.SetMapListner(this);      //according to interface
+
+
+        /*
+        //or send data to fragment using bundle
+        bundle=new Bundle();
+        detailsFragment = new DetailsFragment();
+        mapFragment = new MapFragment();
+        mapFragment.setArguments(bundle);
+        detailsFragment.setArguments(bundle);
+        */
+
 
         setSupportActionBar(toolbarUsedForSale);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -249,8 +266,16 @@ public class ProductActivity extends BaseActivity implements TabLayout.OnTabSele
                 hideProgressBar();
 
                 detailsText=response.body().getData().getNote();
+                //using bundle
+               // bundle.putString("details",detailsText);
+
                 lat=response.body().getData().getLat();
                 lag=response.body().getData().getLng();
+                /*
+                //using bundle
+                bundle.putString("lat",lat);
+                bundle.putString("lang",lag);
+               */
                 ArrayList<UsedForSaleimage> imgarr= response.body().getData().getImages();
 
                 sliderLayout.setIndicatorAnimation(IndicatorAnimations.SWAP); //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
@@ -273,10 +298,7 @@ public class ProductActivity extends BaseActivity implements TabLayout.OnTabSele
                 tabs.addTab(tabs.newTab().setText(getString(R.string.map)));
                 tabs.addTab(tabs.newTab().setText(getString(R.string.details)));
                 tabs.addOnTabSelectedListener(ProductActivity.this);
-                detailsFragment = new DetailsFragment();
-                detailsFragment.SetListner(ProductActivity.this);
-                mapFragment = new MapFragment();
-                mapFragment.SetMapListner(ProductActivity.this);
+
 
                 //default opened fragment
                 FragmentManager fm = getSupportFragmentManager();
@@ -320,14 +342,19 @@ public class ProductActivity extends BaseActivity implements TabLayout.OnTabSele
     }
 
     @Override
-    public void getDetails() {
-            detailsFragment.edit(detailsText);
+    public String getDetails() {
+        return detailsText;
+    }
+
+
+
+    @Override
+    public String lat() {
+        return lat;
     }
 
     @Override
-    public void getPosition() {
-        mapFragment.setPosition(lat,lag);
+    public String lang() {
+        return lag;
     }
-
-
 }

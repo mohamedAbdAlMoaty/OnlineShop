@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,9 +62,6 @@ public class HomeFragment extends BaseFragment implements HomeAdapter.LikeAction
 
         sharedPreferences = getContext().getSharedPreferences(Constaints.SHARED_PREFRE, MODE_PRIVATE);
 
-        showProgressBar();
-        getData();
-
         seeAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,8 +77,8 @@ public class HomeFragment extends BaseFragment implements HomeAdapter.LikeAction
 
     private void getData() {
 
-
         token="Bearer "+sharedPreferences.getString(Constaints.TOKEN,"");
+        showProgressBar();
         apiRetrofit.HomeResponse(token,Constaints.LANG).enqueue(new Callback<HomeResponse>() {
             @Override
             public void onResponse(Call<HomeResponse> call, Response<HomeResponse> response) {
@@ -102,6 +100,12 @@ public class HomeFragment extends BaseFragment implements HomeAdapter.LikeAction
 
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getData();
     }
 
     @Override

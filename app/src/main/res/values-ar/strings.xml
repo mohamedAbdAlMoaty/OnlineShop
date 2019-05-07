@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OnlineShop</string>
+    <string name="loading">تحميل</string>
+    <string name="skip">تخطى</string>
+    <string name="number">رقم التليفون</string>
+    <string name="first_name">الاسم الاول</string>
+    <string name="last_name">الاسم الاخير</string>
+    <string name="login">الدخول</string>
+    <string name="activition_code">كود التفعيل</string>
+    <string name="enter_activition_code">ادخل كود التفعيل</string>
+    <string name="departments">الاقسام</string>
+    <string name="likes">مفضلتى</string>
+    <string name="profile">صفحتى الشخصيه</string>
+    <string name="home">الرئيسيه</string>
+    <string name="used">مستعمل</string>
+    <string name="add_to_card">اضف الى المحفظه</string>
+    <string name="dailog_title">من فضلك اختار احد اللغات</string>
+    <string name="arabic_lang">عربى</string>
+    <string name="lang">عربى</string>
+
+    <string name="english_lang">انجليزى</string>
+    <string name="Delete">حذف</string>
+    <string name="choose">اختار</string>
+    <string name="add_address">اضف عنوان</string>
+    <string name="log_out">خروج</string>
+    <string name="english">انجليزى</string>
+    <string name="language">لغه</string>
+    <string name="information">معلومات</string>
+    <string name="address_profile">عنوان</string>
+    <string name="first_name_profile">الاسم الاول</string>
+    <string name="last_name_profile">الاسم الاخير</string>
+    <string name="phone_number">رقم التليفون</string>
+    <string name="myOrder">طلباتى</string>
+    <string name="save">حفظ</string>
+    <string name="map">مكان</string>
+    <string name="details">تفاصيل</string>
+    <string name="hotoffer">عروض ساخنه</string>
+    <string name="items">items</string>
+    <string name="kd">ك.د</string>
+    <string name="Hot_Deals">صفقات ساخنه</string>
+    <string name="See_All">اظهر الكل</string>
+    <string name="cancel">الغاء</string>
+    <string name="api">AIzaSyC8GW6kTcZI4vrwyV_ZrK0DwHs7qJH_vao</string>
+    <string name="flat">شقه</string>
+    <string name="floor">دور</string>
+    <string name="add_location">اضف مكان</string>
+    <string name="name">اسم</string>
+    <string name="edit">تعديل</string>
+    <string name="address">عنوان</string>
+    <string name="city">مدينه</string>
+    <string name="street">شارع</string>
+    <string name="block">بلوك</string>
+    <string name="governate">محافظه</string>
+</resources>

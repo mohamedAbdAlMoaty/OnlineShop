@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.hp.onlineshop.R;
+import com.example.hp.onlineshop.UI.Bases.BaseFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -18,7 +19,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
  * Created by HP on 1/30/2019.
  */
 
-public class MapFragment extends Fragment implements OnMapReadyCallback {
+public class MapFragment extends BaseFragment implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     String lat;
@@ -34,7 +35,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        mapListener.getPosition();
         return rootView;
     }
 
@@ -44,8 +44,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         mMap.getUiSettings().setZoomControlsEnabled(true);  // زراير الزووم
         mMap.setBuildingsEnabled(true); //3d
-        // Add a marker in Sydney and move the camera
-        LatLng place = new LatLng(Double.parseDouble(lat),Double.parseDouble(lang));
+
+        // or using interface
+        LatLng place = new LatLng(Double.parseDouble(mapListener.lat()),Double.parseDouble(mapListener.lang()));
+
+        /*
+        // or using bundle
+        String lat=getArguments().getString("lat");
+        String lag=getArguments().getString("lang");
+        LatLng place = new LatLng(Double.parseDouble(lat),Double.parseDouble(lag));
+        */
+
         mMap.addMarker(new MarkerOptions().position(place)).showInfoWindow();
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place,7));  //   علشان لو عايز اعمل زووم على مكان لول ما افتح البرنامج
 
@@ -56,12 +65,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         this.mapListener=mapListener;
     }
 
-    public void setPosition(String lat ,String lang ){
-        this.lang=lang;
-        this.lat=lat;
-    }
-
     public interface MapListener{
-        void getPosition();
+        String lat();
+        String lang();
     }
 }

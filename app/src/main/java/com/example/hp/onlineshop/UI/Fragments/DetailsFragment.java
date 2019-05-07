@@ -8,12 +8,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.hp.onlineshop.R;
+import com.example.hp.onlineshop.UI.Bases.BaseFragment;
 
 /**
  * Created by HP on 1/30/2019.
  */
 
-public class DetailsFragment extends Fragment {
+public class DetailsFragment extends BaseFragment {
 
     TextView textView;
     DetailsListener detailsListener;
@@ -24,7 +25,16 @@ public class DetailsFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.details_fragment, container, false);
         textView=rootView.findViewById(R.id.details_used_for_sales);
-        detailsListener.getDetails();
+        //or using interface
+        textView.setText( detailsListener.getDetails());
+
+        /*
+        // or using bundle
+        String details=getArguments().getString("details");
+        textView.setText( details);
+        */
+
+
         return rootView;
     }
 
@@ -32,12 +42,8 @@ public class DetailsFragment extends Fragment {
         this.detailsListener=detailsListener;
     }
 
-    public void edit(String text){
-        textView.setText(text);
-    }
-
     public interface DetailsListener{
-        void getDetails();
+        String getDetails();
     }
 
 }

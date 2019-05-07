@@ -3,10 +3,10 @@
     package="com.example.hp.onlineshop">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--high accuracy with GPs and internet (high consume power)-->
+    <!-- high accuracy with GPs and internet (high consume power) -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <!--low accuracy with only internet (low consume power) -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+    <!-- low accuracy with only internet (low consume power) -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".UI.Activities.LoginActivity" />
-        <activity android:name=".UI.Activities.SplashActivity" >
+        <activity android:name=".UI.Activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,15 +24,21 @@
             </intent-filter>
         </activity>
         <activity android:name=".UI.Activities.ValidationActivity" />
-        <activity android:name=".UI.Activities.HomeActivity">
+        <activity android:name=".UI.Activities.HomeActivity" />
 
-        </activity>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/api" />
+
         <activity android:name=".UI.Activities.ProductActivity" />
-        <activity android:name=".UI.Activities.HotOfferActivity">
+        <activity android:name=".UI.Activities.HotOfferActivity" />
+        <activity android:name=".UI.Activities.SettingProfileActivity" />
+        <activity android:name=".UI.Activities.EditProfileActivity" />
+        <activity android:name=".UI.Activities.Address_list_Activity" />
+        <activity android:name=".UI.Activities.EditActivity">
+
         </activity>
+        <activity android:name=".UI.Activities.ProfileLocationActivity"></activity>
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@
     <string name="enter_activition_code">Enter Activition Code</string>
     <string name="departments">Departments</string>
     <string name="likes">Likes</string>
+    <string name="profile">Profile</string>
     <string name="home">Home</string>
     <string name="hotoffer">Hot Offers</string>
     <string name="used">Used For Sale</string>
@@ -20,5 +21,34 @@
     <string name="add_to_card">Add to card</string>
     <string name="details">Details</string>
     <string name="map">Location</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="myOrder">My Order</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="first_name_profile">first name</string>
+    <string name="last_name_profile">last name</string>
+    <string name="address_profile">address</string>
+    <string name="information">Information</string>
+    <string name="language">Language</string>
+    <string name="english">English</string>
+    <string name="log_out">Log out</string>
+    <string name="add_address">Add Address</string>
+    <string name="choose">Choose</string>
+    <string name="Delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="name">Name</string>
+    <string name="add_location">add location</string>
+    <string name="address">address</string>
+    <string name="governate">governate</string>
+    <string name="city">city</string>
+    <string name="street">street</string>
+    <string name="block">block</string>
+    <string name="flat">flat</string>
+    <string name="floor">floor</string>
+    <string name="english_lang">English</string>
+    <string name="arabic_lang">Arabic</string>
+    <string name="lang">English</string>
+
+    <string name="dailog_title">Please Choose Your Language</string>
     <string name="api">AIzaSyC8GW6kTcZI4vrwyV_ZrK0DwHs7qJH_vao</string>
 </resources>
