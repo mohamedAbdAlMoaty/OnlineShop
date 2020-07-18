@@ -7,13 +7,15 @@ import com.example.hp.onlineshop.UI.Bases.BaseActivity;
 import com.example.hp.onlineshop.R;
 import com.example.hp.onlineshop.Utils.Constaints;
 
+import java.util.concurrent.Future;
+
 public class SplashActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        new Handler()
+         new Handler()
                 .postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -27,5 +29,6 @@ public class SplashActivity extends BaseActivity {
                         finish();
                     }
                 }, 3000);
+
     }
 }
