@@ -4,9 +4,9 @@
 
 ### Supported Android Versions
 
-android versions targeted:
 
-- (API level 26)
+- targetSdkVersion 26
+- minSdkVersion 23
 
 
 ### Libraries
